@@ -5,10 +5,15 @@ import { getGifs } from "../helpers/getGifs";
 
 export const GifGrid = ({ category })=>{
 
-  const [images, setimages] = useState([])
+  const [images, setImages] = useState([])
+
+  const getImages = async()=>{
+    const newImages = await getGifs(category);
+    setImages(newImages);
+  }
 
   useEffect(()=>{
-    getGifs(category);
+    getImages();
   })
 
 
@@ -16,11 +21,13 @@ export const GifGrid = ({ category })=>{
 
 
 
-
   return (
 
     <>
         <h3> { category} </h3>   
+        <ol>
+
+        </ol>
     </>
   )
 
